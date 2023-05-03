@@ -1,0 +1,43 @@
+version: '3.7'
+
+services: 
+    db:
+        image: mcr.microsoft.com/mssql/server
+        container_name: fluxo-db
+        hostname: 'sqlserver'
+        environment:
+            MSSQL_SA_PASSWORD: "Abc*1256"
+            ACCEPT_EULA: "Y"      
+        ports:
+            - "1435:1433"
+        expose:
+            -  1435
+        volumes:
+            - fluxocaixa:/var/lib/mssql           
+    fluxoapi:
+        image: fluxoapi:latest
+        container_name: fluxoapi
+        build:
+            context: ../src
+            dockerfile: ./FluxoCaixa.Transacao.Api/Dockerfile
+        ports:
+            - "5001:80"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        depends_on:
+            - db
+    fluxorelatorio:
+        image: fluxorelatorio:latest
+        container_name: fluxorelatorio
+        build:
+            context: ../src
+            dockerfile: ./FluxoCaixa.Relatorio/Dockerfile
+        ports:
+            - "5003:80"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        depends_on:
+            - db
+volumes:
+  fluxocaixa:    
+    name: fluxocaixa
