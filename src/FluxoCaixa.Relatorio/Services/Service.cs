@@ -10,9 +10,9 @@ namespace FluxoCaixa.Relatorio.Services
         {
             _repository = repository;
         }
-        public async Task<IEnumerable<RelatorioDto>> GetRelatorioDiario()
+        public async Task<IEnumerable<RelatorioDto>> GetRelatorioDiario(int caixaId)
         {
-            var relatorio = await _repository.GetRelatorio();
+            var relatorio = await _repository.GetRelatorio(caixaId);
 
             return relatorio;
         }

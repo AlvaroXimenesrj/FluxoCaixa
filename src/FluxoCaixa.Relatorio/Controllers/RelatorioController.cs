@@ -14,9 +14,10 @@ namespace FluxoCaixa.Relatorio.Controllers
             _service = service;
         }
         [HttpGet]
-        public async Task<IActionResult> GetRelatorio()
+        [Route("{caixaId}")]
+        public async Task<IActionResult> GetRelatorio(int caixaId)
         {
-            var relatorio = await _service.GetRelatorioDiario();
+            var relatorio = await _service.GetRelatorioDiario(caixaId);
 
             return Ok(relatorio);
         }
