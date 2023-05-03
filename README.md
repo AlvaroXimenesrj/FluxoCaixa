@@ -31,7 +31,7 @@ Para rodar localmente configure o Visual Studio para startups multiplos:
 
 Após, basta iniciar a aplicação via Visual Studio: `F5`
 
-A aplicação está configurada para rodar via docker containers. Basta ir na basta `_docker_` localizada na raixa do projeto e executar o comando `docker compose up`.
+A aplicação está configurada para rodar via docker containers. Baixe o projeto para o seu computador e na basta `_docker_` localizada na raixa do projeto, execute o comando `docker compose up`.
 
 Em ambos os casos a api de lançamento ficará na url: 
 `http://localhost:5001/swagger/index.html`
