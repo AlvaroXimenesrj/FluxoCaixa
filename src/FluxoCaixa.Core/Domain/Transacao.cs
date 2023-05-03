@@ -10,7 +10,7 @@
         public virtual Caixa Caixa { get; private set; }
         public int CaixaId { get; private set; }
 
-        public static Transacao TransacaoFactory(TipoTransacao tipoTransacao, decimal valor, string descricao)
+        public static Transacao TransacaoFactory(TipoTransacao tipoTransacao, decimal valor, string descricao, int caixaId)
         {
             var transacao = new Transacao();
 
@@ -18,6 +18,7 @@
             transacao.Valor = valor;
             transacao.Descricao = descricao;
             transacao.TipoTransacao = tipoTransacao;
+            transacao.CaixaId = caixaId;
 
             return transacao;
 

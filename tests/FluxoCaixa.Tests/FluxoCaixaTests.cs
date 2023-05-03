@@ -17,7 +17,7 @@ namespace FluxoCaixa.Tests
 
             // Act
 
-            var transacao = Transacao.TransacaoFactory(tipoTransacao, 100, descricao);
+            var transacao = Transacao.TransacaoFactory(tipoTransacao, 100, descricao,1);
 
             // Assert
 

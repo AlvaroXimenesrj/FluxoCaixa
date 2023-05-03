@@ -9,6 +9,7 @@ namespace FluxoCaixa.Core.Data.Context
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {   
             Database.EnsureCreated();
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         public DbSet<Transacao> Transacoes { get; set; }

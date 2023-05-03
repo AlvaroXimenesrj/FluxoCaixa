@@ -33,7 +33,7 @@ namespace FluxoCaixa.Api.Services
         {
             var tipo = (TipoTransacao)Enum.Parse(typeof(TipoTransacao), command.Tipo);
 
-            var transacao = Transacao.TransacaoFactory(tipo, command.Valor, command.Descricao);
+            var transacao = Transacao.TransacaoFactory(tipo, command.Valor, command.Descricao, command.CaixaId);
 
            await _repository.SalvarTransacao(transacao);
         }
