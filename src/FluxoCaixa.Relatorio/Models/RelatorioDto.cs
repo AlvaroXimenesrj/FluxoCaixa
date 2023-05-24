@@ -4,7 +4,8 @@
     {
         public int Id { get; set; }
         public decimal Saldo { get; set; }
-        public DateTime Dia { get; set; }       
+        public DateTime Dia { get; set; }
+        public decimal SaldoDia {get;set;}
         public List<TransacaoDTO> Transacoes { get; set; }
     }
 

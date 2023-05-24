@@ -13,6 +13,8 @@ namespace FluxoCaixa.Data.Repository
         }
         public async Task<IEnumerable<RelatorioDto>> GetRelatorio(int caixaId, DateTime dia)
         {
+            var diaConsulta = dia.ToString("yyy/MM/dd");
+
             var sqlCommand = @"SELECT
                                Caixas.Id,
                                Caixas.Saldo,
@@ -24,7 +26,8 @@ namespace FluxoCaixa.Data.Repository
                                FROM Caixas
                                LEFT JOIN Transacoes ON Caixas.Id = Transacoes.CaixaId
                                WHERE Caixas.Id = @caixaId
-                               AND Transacoes.Data = @dia
+                               --AND Transacoes.Data < @dia
+                               AND CAST(Transacoes.Data AS date) = @diaConsulta
                                ORDER by Transacoes.Data desc";            
 
             var relatorioDictionary = new Dictionary<int, RelatorioDto>();
@@ -47,7 +50,7 @@ namespace FluxoCaixa.Data.Repository
                         }
                         return relatorioEntry;
 
-                    }, new { caixaId, dia },splitOn: "TransacaoId").Distinct().ToList();
+                    }, new { caixaId, diaConsulta }, splitOn: "TransacaoId").Distinct().ToList();
 
            
             return relatorio;
