@@ -1,7 +1,7 @@
 Exemplo da construções de serviços para realizar lançamentos financeiros diários.
 
 ## Tecnologias utilizadas
-
+```
 .Net 7.
 Entity Framework Core.
 Dapper.
@@ -10,7 +10,7 @@ MediatR.
 Swagger.
 xUnit.
 Microsoft SQL Server.
-
+```
 ## Arquitetura
 
 ![](img/solution.png)
