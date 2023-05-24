@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using FluxoCaixa.Core.Data.Context;
 using FluxoCaixa.Relatorio.Models;
 using System.Data;
 
@@ -7,27 +6,26 @@ namespace FluxoCaixa.Data.Repository
 {
     public class Repository : IRepository
     {
-        private readonly IDbConnection _connection;
-        private readonly AppDbContext _db;
-        public Repository(IDbConnection connection, AppDbContext db)
+        private readonly IDbConnection _connection;        
+        public Repository(IDbConnection connection)
         {
-            _connection = connection;
-            _db = db;
+            _connection = connection;           
         }
-        public async Task<IEnumerable<RelatorioDto>> GetRelatorio(int caixaId)
+        public async Task<IEnumerable<RelatorioDto>> GetRelatorio(int caixaId, DateTime dia)
         {
             var sqlCommand = @"SELECT
-                                Caixas.Id,
-                                Caixas.Saldo,
-                                Transacoes.Id as TransacaoId,
-                                Transacoes.Descricao,
-                                Transacoes.Data,
-                                Transacoes.TipoTransacao,
-                                Transacoes.valor
-                                FROM Caixas
-                                LEFT JOIN Transacoes ON Caixas.Id = Transacoes.CaixaId
-                                WHERE Caixas.Id = @caixaId
-                                ORDER by Transacoes.Data desc";            
+                               Caixas.Id,
+                               Caixas.Saldo,
+                               Transacoes.Id as TransacaoId,
+                               Transacoes.Descricao,
+                               Transacoes.Data,
+                               Transacoes.TipoTransacao,
+                               Transacoes.valor
+                               FROM Caixas
+                               LEFT JOIN Transacoes ON Caixas.Id = Transacoes.CaixaId
+                               WHERE Caixas.Id = @caixaId
+                               AND Transacoes.Data = @dia
+                               ORDER by Transacoes.Data desc";            
 
             var relatorioDictionary = new Dictionary<int, RelatorioDto>();
 
@@ -49,8 +47,9 @@ namespace FluxoCaixa.Data.Repository
                         }
                         return relatorioEntry;
 
-                    }, new { caixaId },splitOn: "TransacaoId").Distinct().ToList();
+                    }, new { caixaId, dia },splitOn: "TransacaoId").Distinct().ToList();
 
+           
             return relatorio;
         }
     }

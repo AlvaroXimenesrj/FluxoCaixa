@@ -2,14 +2,14 @@ Exemplo da construções de serviços para realizar lançamentos financeiros di�
 
 ## Tecnologias utilizadas
 
-.Net 7
-Entity Framework Core
-Dapper
-FluentValidation 
-MediatR
-Swagger
-xUnit
-Microsoft SQL Server
+.Net 7.
+Entity Framework Core.
+Dapper.
+FluentValidation .
+MediatR.
+Swagger.
+xUnit.
+Microsoft SQL Server.
 
 ## Arquitetura
 

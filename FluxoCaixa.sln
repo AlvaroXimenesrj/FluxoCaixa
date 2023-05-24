@@ -22,7 +22,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Core", "src\Flux
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Tests", "5.Tests", "{CA1DF535-E047-4AFA-B476-377E7628EFB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxoCaixa.Tests", "tests\FluxoCaixa.Tests\FluxoCaixa.Tests.csproj", "{D3F890A9-3914-4B36-93B9-E9862C62D226}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Tests", "tests\FluxoCaixa.Tests\FluxoCaixa.Tests.csproj", "{D3F890A9-3914-4B36-93B9-E9862C62D226}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{95A07D30-3AC3-495F-8922-EE5EA6B11D83}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

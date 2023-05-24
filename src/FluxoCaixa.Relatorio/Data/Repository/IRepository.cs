@@ -4,6 +4,6 @@ namespace FluxoCaixa.Data.Repository
 {
     public interface IRepository
     {
-        Task<IEnumerable<RelatorioDto>> GetRelatorio(int caixaId);
+        Task<IEnumerable<RelatorioDto>> GetRelatorio(int caixaId, DateTime dia);
     }
 }
